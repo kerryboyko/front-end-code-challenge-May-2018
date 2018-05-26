@@ -1,3 +1,123 @@
-.Category {
+.category__hero-area {
+  background-image: url('/media/plates-header.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 10012;
+  height: 30vh;
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+}
 
+.category__hero-center {
+  background-color: #393935;
+  display: grid;
+  grid-template-rows: 7vh 16vh 7vh;
+  align-items: center;
+  justify-items: center;
+}
+
+.category__hero-center__short-line {
+  width: 8vw;
+  border-bottom: 1px solid white;
+  justify-self: center;
+  margin: 2vh auto;
+}
+
+.category__hero-center__text__title {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  color: white;
+  font-size: 35px;
+  letter-spacing: 2px;
+}
+
+.category__hero-center__text__description {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 300;
+  color: white;
+  font-size: 12px;
+  margin: 1vh 3vw;
+  line-height: 2.5vh;
+}
+
+.category__product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px 30px;
+  padding: 50px 10vh 50px 10vh;
+}
+
+.category__product__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.category__product__image:hover .category__product__overlay {
+  opacity: 1;
+}
+
+.category__product__overlay__inner {
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+}
+
+.category__product__image {
+  position: relative; /* needed for hoverover */
+  width: 100%;
+  padding-top: calc((9 / 16) * 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.category__product__brand {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans;
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.category__product__title {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.category__product__price {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.category__product__button {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans;
+  font-size: 14px;
+  padding: 10px 20px;
+  margin: 2vw;
+  color: white;
+  background-color: #555;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.category__product__button:hover {
+  background-color: #000;
 }

@@ -4,8 +4,7 @@
 Using React, create a single-page app which renders a mock storefront that matches the provided screenshots, using the
 supplied JSON and media files. The `products.json` file can be accessed by
 making a GET request to `'/products.json'`
-* The storefront consists of three main screens: a category list page, a product details page, and a cart page. More
-  details are provided below.
+* The storefront consists of three main screens: a category list page, a product details page, and a cart page. More details are provided below.
 * Clicking the Add to Cart button on a product tile or on the product detail page should add the item to the cart
   dynamically.
 * Attempting to add a duplicate item to the cart should instead increment the quantity for that item.
@@ -26,8 +25,7 @@ making a GET request to `'/products.json'`
 #### Category List page:
 ![](./screens/category-page.png)
 * Clicking the My Cart link should display the Cart Popup.
-* Hovering over one of the product tiles should display an overlay prompting the user to Add to Cart or View Details,
-  as below:
+* Hovering over one of the product tiles should display an overlay prompting the user to Add to Cart or View Details, as below:
 
 ![](./screens/product-tile-overlay.png)
 

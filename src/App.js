@@ -1,36 +1,57 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
-import logo from './logo.svg';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import get from 'lodash/get';
 import './App.css';
-import Category from "./category/Category";
-import Cart from "./cart/Cart";
-import Product from "./product/Product";
+import Category from './Category';
+import Header from './Header';
+import Cart from './Cart';
+import Product from './Product';
+import { actions } from './store';
 
 class App extends Component {
+  /* This code would likely not be in a real application in this component.
+   See /src/Category/index.js for more information */
+  componentWillMount() {
+    if (!this.props.platesIsLoaded) {
+      this.props.getPlates();
+    }
+  }
   render() {
-    return (
+    return this.props.platesIsLoaded ? (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Storefront Assignment</h1>
-        </header>
-        <p className="App-intro">
-          To get started, delete this header and introduction, and begin building your app in the provided components.
-        </p>
-        <p className="App-intro">
-          We've setup the bare minimum you need to get started, but feel free to add as many components as you see fit.
-        </p>
-
-        <header>
-            <Link to="/cart">My Cart</Link>
-        </header>
-
-        <Route exact path="/" component={Category} />
-        <Route path="/cart" component={Cart}/>
-        <Route path="/product/:id" component={Product}/>
+        <BrowserRouter>
+          <div>
+            <Header />
+            <Switch>
+              <Route path="/product/:productId" component={Product} />
+              <Route path="/category/:category" component={Category} />
+              <Route path="/cart" component={Cart} />
+              <Route exact path="/">
+                <Redirect to="/category/plates" />
+              </Route>
+              <Route>
+                <Redirect to="/category/plates" />
+              </Route>
+            </Switch>
+          </div>
+        </BrowserRouter>
       </div>
-    );
+    ) : null;
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { platesIsLoaded: !!get(state, 'categories.plates', false) };
+};
+
+/* This code would likely not be in a real application in this component.
+   See /src/Category/index.js for more information */
+const mapDispatchToProps = dispatch => ({
+  getPlates: () => dispatch(actions.getCategory('plates'))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
